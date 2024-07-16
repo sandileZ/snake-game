@@ -14,6 +14,10 @@ let gameRunning = false;
 document.addEventListener('keydown', changeDirection);
 document.getElementById('startButton').addEventListener('click', startGame);
 document.getElementById('pauseButton').addEventListener('click', pauseGame);
+document.getElementById('upButton').addEventListener('click', () => changeDirection({ keyCode: 38 }));
+document.getElementById('downButton').addEventListener('click', () => changeDirection({ keyCode: 40 }));
+document.getElementById('leftButton').addEventListener('click', () => changeDirection({ keyCode: 37 }));
+document.getElementById('rightButton').addEventListener('click', () => changeDirection({ keyCode: 39 }));
 window.addEventListener('resize', resizeCanvas);
 
 function resizeCanvas() {
@@ -98,14 +102,12 @@ function drawGame() {
 function drawSnake() {
     ctx.fillStyle = 'lime';
     snake.forEach(segment => {
-        console.log(`Snake segment at (${segment.x}, ${segment.y})`); // Debugging information
         ctx.fillRect(segment.x * gridSize, segment.y * gridSize, gridSize, gridSize);
     });
 }
 
 function drawFood() {
     ctx.fillStyle = 'red';
-    console.log(`Food at (${food.x}, ${food.y})`); // Debugging information
     ctx.fillRect(food.x * gridSize, food.y * gridSize, gridSize, gridSize);
 }
 
